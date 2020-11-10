@@ -1,9 +1,7 @@
 import pymorphy2
-import nltk
+import re
 
 from parse_gram import get_local_gram_table
-
-nltk.download('punkt')
 
 
 def translate_gram(tag):
@@ -100,11 +98,11 @@ def translate_gram(tag):
 
 def analyze_word(source: str):
     def parse_sentence(raw_sentence: str) -> list:
-        return nltk.word_tokenize(raw_sentence)
+        return list(set(re.findall(r"[\w\-\\/\\']+", raw_sentence)))
 
     def parse_pymorphy2(word: str):
         morphy = pymorphy2.MorphAnalyzer()
-        return morphy.parse(word)[:2]
+        return morphy.parse(word)[:5]
 
     split_sentence = parse_sentence(source)
 

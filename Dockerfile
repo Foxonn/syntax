@@ -10,4 +10,4 @@ WORKDIR syntax
 
 RUN pipenv install --deploy --system --ignore-pipfile
 
-CMD  uvicorn app:app --port 80 --host 0.0.0.0 --reload
+CMD uvicorn app:app --port 80 --host 0.0.0.0 --reload
